@@ -16,10 +16,11 @@ export default class comp1 extends RootComponent {
 	last_name = "baird";
 	clicked = false;
 	fart_smell = "ok";
+	providerId = null;
 	click() {
 		this.clicked = !this.clicked;
 	}
-	fart() {
+	createProvider() {
 		this.fart_smell = "really bad";
 	}
 }

@@ -2,9 +2,13 @@ import express from "express";
 import TestPage from "./modules/TestPage.js";
 import cors from "cors";
 import hydrateAndRespond from "./modules/hydrateAndRespond.js";
+import path from "path";
 let app = express();
 app.use(express.json());
 app.use(cors());
+
+global.appRoot = path.resolve("./");
+
 const port = 3000;
 app.set("view engine", "hbs");
 app.get("/", async (req, res) => {
@@ -21,7 +25,7 @@ app.post("/minilith", async (req, res) => {
 		console.error(error);
 	}
 });
-app.use(express.static("../client"));
+app.use(express.static(appRoot + "/../client"));
 app.listen(port, () => {
 	console.log(`Example app listening at http://localhost:${port}`);
 });
