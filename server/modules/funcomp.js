@@ -5,7 +5,7 @@ export default class funcomp extends RootComponent {
 		<p>{{greeting}}</p>
 		<button @click="click">click me!</button>
 		{{#clicked}}
-			<h1>I was freaking clicked</h1>
+			<h1>look how much fun we are having!?</h1>
 		{{/clicked}}
 	</div>
 `;
