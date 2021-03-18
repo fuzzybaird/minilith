@@ -1,0 +1,32 @@
+{
+  "name": "minilith-client",
+  "version": "0.0.1",
+  "description": "The client scripts that bind the UI to RPC Server.",
+  "main": "./src/index.js",
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest test --watch",
+    "start": "snowpack dev"
+  },
+  "keywords": [
+    "client",
+    "ui",
+    "minilith",
+    "reactive",
+    "server"
+  ],
+  "author": "Eli Baird",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/dom": "^7.30.0",
+    "@testing-library/jest-dom": "^5.11.9",
+    "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
+    "snowpack": "^3.0.13",
+    "webpack": "^5.25.0",
+    "webpack-cli": "^4.5.0"
+  }
+}
