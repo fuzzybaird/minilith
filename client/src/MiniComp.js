@@ -14,6 +14,7 @@ export default class MiniComp {
 		this.renderHistory = [];
 		this.callBindings = {};
 	}
+
 	renderTick() {
 		let wrapper = document.createElement("div");
 		wrapper.innerHTML = this.renderHistory[this.renderHistory.length - 1];
@@ -31,9 +32,7 @@ export default class MiniComp {
 			return true;
 		});
 	}
-	setInitialState() {
-		this.ref;
-	}
+
 	async dispatchAction(method, params = []) {
 		fetcher
 			.postData(this.miniTarget, this.generateServerRequest(method, params))
@@ -41,7 +40,8 @@ export default class MiniComp {
 				this.renderHistory.push(res.render);
 				this.context = res.context;
 				this.renderTick();
-			});
+			})
+			.catch((err) => console.error(err));
 	}
 	getTarget() {
 		return this.miniTarget;

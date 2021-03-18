@@ -25,6 +25,7 @@ describe("client side library", () => {
 	});
 
 	it("should mount, and ask server for initial rendered template, then when button clicked ask server for second template", async () => {
+		// arranging the two requests needed to represent the actions the component could take against server
 		fetch
 			.once(
 				JSON.stringify(
@@ -47,7 +48,6 @@ describe("client side library", () => {
 		await Minilith.start();
 		testingDom.fireEvent.click(testingDom.screen.getByText("dogs"));
 		await testingDom.waitFor(() => {
-			// console.log(fetch);
 			expect(fetch.mock.calls[1][0]).toBe("/minilith");
 		});
 
