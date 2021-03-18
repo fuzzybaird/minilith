@@ -20,6 +20,9 @@ export default class comp1 extends RootComponent {
 	click() {
 		this.clicked = !this.clicked;
 	}
+	fart() {
+		this.fart_smell = "i am about to pass out";
+	}
 	createProvider() {
 		this.fart_smell = "really bad";
 	}
