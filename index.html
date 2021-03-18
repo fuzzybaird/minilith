@@ -11,12 +11,20 @@
 		<template
 			mi-name="comp1"
 			mi-target="http://localhost:3000/minilith"
-			mi-data="{sharedkey:alskdjflksjdlkj}"
-		></template>
+			mi-context="{sharedkey:alskdjflksjdlkj}"
+		>
+			<div>
+				<h1>How the hell does my room smell so bad?</h1>
+				<button @click="fart">pass gas</button>
+				<div style="background-color: brown; color: ghostwhite; padding: 100px">
+					the smell of this rooom is {{fart_smell}}
+				</div>
+			</div>
+		</template>
 		<template
 			mi-name="comp2"
 			mi-target="http://localhost:3000/minilith"
-			mi-data="{sharedkey:alskdjflksjdlkj}"
+			mi-context="{sharedkey:alskdjflksjdlkj}"
 		></template>
 		<template
 			mi-name="funcomp"

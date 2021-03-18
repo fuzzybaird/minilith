@@ -1,7 +1,7 @@
 import express from "express";
 import TestPage from "./modules/TestPage.js";
 import cors from "cors";
-import hydrateAndRespond from "./modules/hydrateAndrRespond.js";
+import hydrateAndRespond from "./modules/hydrateAndRespond.js";
 let app = express();
 app.use(express.json());
 app.use(cors());
@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
 });
 app.post("/minilith", async (req, res) => {
 	try {
-		console.log(req.body);
+		// console.log(req.body);
 		const compClass = await import(`./modules/${req.body.name}.js`);
 		res.send(hydrateAndRespond(req.body, compClass.default));
 	} catch (error) {
