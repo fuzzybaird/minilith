@@ -1,5 +1,5 @@
 import MiniComp from "./MiniComp.js";
-import { isTesting, walk } from "./utils.js";
+import { isTesting } from "./utils.js";
 import fetcher from "./Fetcher.js";
 const Minilith = {
 	miniliths: {},
@@ -28,7 +28,7 @@ const Minilith = {
 						this.miniliths[res.name].renderHistory.push(res.render);
 						this.miniliths[res.name].renderTick();
 					});
-					return true;
+					return result;
 				}
 			})
 			.catch((error) => {
@@ -38,12 +38,17 @@ const Minilith = {
 };
 
 if (!isTesting()) {
+	// @ts-ignore
 	window.Minilith = Minilith;
+	// @ts-ignore
 	if (window.deferLoadingMinilith) {
+		// @ts-ignore
 		window.deferLoadingMinilith(function () {
+			// @ts-ignore
 			window.Minilith.start();
 		});
 	} else {
+		// @ts-ignore
 		window.Minilith.start();
 	}
 }

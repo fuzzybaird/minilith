@@ -1,8 +1,9 @@
 import fetchMock from "jest-fetch-mock";
 import Minilith from "../src/index.js";
 import comp from "./BackendComps/comp";
-import { walk } from "../src/utils";
 import testingDom from "@testing-library/dom";
+import MiniComp from "../src/MiniComp";
+
 fetchMock.enableMocks();
 describe("client side library", () => {
 	beforeEach(() => {
@@ -18,7 +19,7 @@ describe("client side library", () => {
 		`;
 		Minilith.start();
 		await testingDom.waitFor(() => {
-			expect(document.querySelector("button").getAttribute("@click")).toEqual(
+			expect(document.querySelector("button").getAttribute("mi:click")).toEqual(
 				"click"
 			);
 		});
@@ -30,14 +31,14 @@ describe("client side library", () => {
 			.once(
 				JSON.stringify(
 					new comp().renderJson(
-						/*html*/ `<div><button @click="dogs">dogs</button><button @click="cats">cats</button></div>`
+						/*html*/ `<div><button mi:click="dogs">dogs</button><button mi:click="cats">cats</button></div>`
 					)
 				)
 			)
 			.once(
 				JSON.stringify(
 					new comp().renderJson(
-						/*html*/ `<div><button @click="dogs">dogs</button><button @click="cats">cats</button><span id="return">you returned me</span></div>`
+						/*html*/ `<div><button mi:click="dogs">dogs</button><button mi:click="cats">cats</button><span id="return">you returned me</span></div>`
 					)
 				)
 			);
@@ -55,6 +56,33 @@ describe("client side library", () => {
 			expect(document.querySelector("span").innerHTML).toEqual(
 				"you returned me"
 			);
+		});
+	});
+
+	it("should be able to submit change events mi:model input", async () => {
+		fetch.once(
+			JSON.stringify(
+				new comp().renderJson(
+					/*html*/ `<div><button mi:click="dogs">dogs</button><button mi:click="cats">cats</button></div>`
+				)
+			)
+		);
+		document.body.innerHTML = /*html*/ `<template mi-name="comp" mi-context="{cats:'rule'}"></template>`;
+		let mini = new MiniComp(document.body.firstElementChild);
+		mini.pushRender("<input mi:model='cats' value='test' />").renderTick();
+		expect(document.querySelector("input").constructor.name).toBe(
+			"HTMLInputElement"
+		);
+		// console.log(mini.ref.firstElementChild);
+		testingDom.fireEvent.change(mini.ref.firstElementChild, {
+			target: { value: "23" },
+		});
+
+		await testingDom.waitFor(() => {
+			// console.log(fetch.mock.calls[0][1].body);
+			const resp = JSON.parse(fetch.mock.calls[0][1].body);
+			expect(resp.action.params).toStrictEqual(["cats", "23"]);
+			expect(resp.action.method).toBe("updateContextVal");
 		});
 	});
 });

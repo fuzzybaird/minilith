@@ -9,18 +9,29 @@
 	<body>
 		<h1>Welcome to Snowpack!</h1>
 		<template
-			mi-name="componentname"
+			mi-name="ComponentName"
 			mi-target="http://optional.cross.domain.url/minilith"
 			mi-stream="ws://optional.cross.domain.url/minilith"
 			mi-context="{
-				description:'the initial state of this component, and passed back and forth between server and client',
-				reactivity:true,
+				description: 'the initial state of this component, and passed back and forth between server and client',
+				reactivity: true,
 				signature: 'hash:laksdjflj2323awelkjl',
 				resourceId: '1234232wdwd'
 			}"
 		>
-			<!-- mustache templates plus client side minding directives -->
+			<!-- mustache templates plus client side minded directives -->
 			<div id="tweets" mi:stream-able="tweets" type="append"></div>
+
+			<!-- the template will describe the iterable elements  -->
+			<div class="collection container">
+				{{#ArrayOfObjects}}
+				<span>{{firstName}}</span><span>{{lastName}}</span>
+				{{/ArrayOfObjects}}
+			</div>
+
+			{{#ArrayOfStrings}}{{.}}{{/ArrayOfStrings}}
+
+			<form action="/default-url"></form>
 		</template>
 		<script type="module" src="/src/index.js"></script>
 	</body>

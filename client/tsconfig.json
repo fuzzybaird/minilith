@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "checkJs": true,
+      "allowJs": true,
+    //   "target": "ES2020",
+      "noEmit": true,
+      "module": "ES2020",
+      "moduleResolution":"Node",
+    },
+    "include": [
+      "src/*"
+    ]
+}
