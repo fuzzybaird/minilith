@@ -1,6 +1,7 @@
 import RootComponent from "../modules/RootComponent.js";
 import root from "app-root-path";
 import getParams from "get-parameter-names";
+import hbs from "hbs";
 export default class ComponentDoc extends RootComponent {
 	template = /*html*/ `
 <div class="p-4 bg-gray-200 border">
@@ -16,13 +17,43 @@ export default class ComponentDoc extends RootComponent {
 	</ul>
 	<pre
 		class="overflow-x-scroll"
+	><code data-language="html">{{rendered_helper}}</code></pre>
+	<pre
+		class="overflow-x-scroll"
 	><code data-language="html">{{component_template}}</code></pre>
 </div>`;
+
+	/**
+	 * The helper template to accelerate people experimenting
+	 */
+	helper_template = /*html*/ `<html>
+	<head>
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<template
+			mi-name="{{component_name}}"
+			mi-target="https://minilith.elibaird.com/minilith"
+			mi-context="{}"
+		></template>
+		<script
+			type="module"
+			src="https://minilith.elibaird.com/src/index.js"
+		></script>
+	</body>
+</html>
+`;
 	component_name = "";
 	show_default_template = false;
 	component_template = "";
 	component_meta = [];
-
+	rendered_helper = () => {
+		const template = hbs.handlebars.compile(this.helper_template);
+		return template({ component_name: this.component_name });
+	};
 	async init() {
 		const compClass = await import(
 			`${root}/components/${this.component_name}.js`
