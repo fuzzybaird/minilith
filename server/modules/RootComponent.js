@@ -25,5 +25,10 @@ export default class RootComponent {
 			});
 		});
 	}
+	updateContextVal(key, val) {
+		if (this[key]) {
+			this[key] = val;
+		}
+	}
 	init() {}
 }

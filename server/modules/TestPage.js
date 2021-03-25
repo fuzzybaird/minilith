@@ -4,27 +4,61 @@ export default class testpage extends RootComponent {
 	template = /*html*/ `
 	<!DOCTYPE html>
 	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<title>Document</title>
-	</head>
-	<body>
-		<template minilith="comp1" mi-data="{sharedkey:alskdjflksjdlkj}">
-			<div>
-				<h3 class="green">{{first_name}}</h3>
-				<p>{{last_name}}-iscool</p>
-				<button @click="click">click me!</button>
-				{{#clicked}}
-					<h1>who da man!!</h1>
-				{{/clicked}}
+		<head>
+			<meta charset="UTF-8" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<link
+				href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+				rel="stylesheet"
+			/>
+			<link
+				rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/themes/github.min.css"
+				integrity="sha512-dqCmbGxLwDqQYmI+Dr0LAWG21trYGnqIaw+yuyfmLXTmb8tiZyvOeqQqmJbZWv7UpzUeRV9Zj6QTKMw4eMSiHw=="
+				crossorigin="anonymous"
+			/>
+			<title>Document</title>
+		</head>
+		<body>
+			<h1 class="text-2xl text-center mb-6">My page</h1>
+			<div class="max-w-prose mx-auto">
+				<template
+					mi-name="DoctorSearch"
+					mi-target="http://localhost:3000/minilith"
+					mi-context="{search:'Cat'}"
+				></template>
+				<template
+					mi-name="ComponentDoc"
+					mi-target="http://localhost:3000/minilith"
+					mi-context="{component_name:'DoctorSearch'}"
+				></template>
 			</div>
-		</template>
-		<script type="module" src="/src/index.js" ></script>
-		<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-	</body>
+	
+			<!-- <template
+				mi-name="funcomp"
+				mi-target="http://localhost:3000/minilith"
+			></template> -->
+	
+			<script type="module" src="http://localhost:3000/src/index.js"></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"
+				integrity="sha512-1iwOtzgGTn5KiNhyTHdGh8IpixXZnsD0vRXUqNUgWqET4Uv3vDXuHq55cGjdJ+qNBL/HxH815N7qvLxgzA1dYw=="
+				crossorigin="anonymous"
+			></script>
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/language/html.min.js"
+				integrity="sha512-2W7f/2AT/pqNI+4hrfTDsAz67Jb267F+SjVQ38iODHDScHBpQ//aZrVMtiblC6KrP2YpwI33934NVOaV+QUI0Q=="
+				crossorigin="anonymous"
+			></script>
+			<script>
+				(() => {
+					setTimeout(() => {
+						Rainbow.color();
+					}, 1000);
+				})();
+			</script>
+		</body>
 	</html>
 	`;
 }

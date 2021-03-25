@@ -4,36 +4,30 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+
 		<title>Document</title>
 	</head>
 	<body>
-		<h1>My page</h1>
-		<template
-			mi-name="comp1"
-			mi-target="https://minilith.elibaird.com/minilith"
-			mi-context="{sharedkey:alskdjflksjdlkj}"
-		>
-			<div>
-				<h1>How the hell does my room smell so bad?</h1>
-				<button @click="fart">pass gas</button>
-				<div style="background-color: brown; color: ghostwhite; padding: 100px">
-					the smell of this rooom is {{fart_smell}}
-				</div>
-			</div>
-		</template>
-		<template
+		<h1 class="text-2xl text-center mb-6">My page</h1>
+		<div class="max-w-prose mx-auto">
+			<template
+				mi-name="comp1"
+				mi-target="http://localhost:3000/minilith"
+				mi-context="{search:'Cat'}"
+			></template>
+		</div>
+		<!-- <template
 			mi-name="comp2"
-			mi-target="https://minilith.elibaird.com/minilith"
-			mi-context="{sharedkey:alskdjflksjdlkj}"
+			mi-target="http://localhost:3000/minilith"
 		></template>
 		<template
 			mi-name="funcomp"
-			mi-target="https://minilith.elibaird.com/minilith"
-			mi-data="{sharedkey:alskdjflksjdlkj}"
-		></template>
-		<script
-			type="module"
-			src="https://minilith.elibaird.com/src/index.js"
-		></script>
+			mi-target="http://localhost:3000/minilith"
+		></template> -->
 	</body>
+	<script type="module" src="http://localhost:3000/src/index.js"></script>
 </html>

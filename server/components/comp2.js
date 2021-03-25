@@ -1,9 +1,9 @@
-import RootComponent from "./RootComponent.js";
+import RootComponent from "../modules/RootComponent.js";
 export default class comp2 extends RootComponent {
 	template = /*html*/ `
 	<div style="background:green;">
 		<p>{{greeting}}</p>
-		<button @click="click">click me!</button>
+		<button @click="click" class="bg-green-200">click me!</button>
 		{{#clicked}}
 			<h1>I was freaking clicked</h1>
 		{{/clicked}}

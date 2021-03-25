@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest test",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "chrome:mac": "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --remote-debugging-port=9222"
   },
   "keywords": [
     "mini",
@@ -19,9 +20,11 @@
     "app-root-path": "^3.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "get-parameter-names": "^0.3.0",
     "handlebars-layouts": "^3.1.4",
     "hbs": "^4.1.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "synchronized-promise": "^0.3.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.30.0",

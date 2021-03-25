@@ -1,4 +1,4 @@
-import RootComponent from "./RootComponent.js";
+import RootComponent from "../modules/RootComponent.js";
 export default class funcomp extends RootComponent {
 	template = /*html*/ `
 	<div style="background:blue;">

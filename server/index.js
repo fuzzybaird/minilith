@@ -17,8 +17,8 @@ app.get("/", async (req, res) => {
 app.post("/minilith", async (req, res) => {
 	try {
 		// console.log(req.body);
-		const compClass = await import(`./modules/${req.body.name}.js`);
-		res.send(hydrateAndRespond(req.body, compClass.default));
+		const compClass = await import(`./components/${req.body.name}.js`);
+		res.send(await hydrateAndRespond(req.body, compClass.default));
 	} catch (error) {
 		console.error(error);
 	}
