@@ -25,22 +25,22 @@ export default class testpage extends RootComponent {
 			<div class="max-w-prose mx-auto">
 				<template
 					mi-name="DoctorSearch"
-					mi-target="http://localhost:3000/minilith"
+					mi-target="/minilith"
 					mi-context="{search:'Cat'}"
 				></template>
 				<template
 					mi-name="ComponentDoc"
-					mi-target="http://localhost:3000/minilith"
+					mi-target="/minilith"
 					mi-context="{component_name:'DoctorSearch'}"
 				></template>
 			</div>
 	
 			<!-- <template
 				mi-name="funcomp"
-				mi-target="http://localhost:3000/minilith"
+				mi-target="/minilith"
 			></template> -->
 	
-			<script type="module" src="http://localhost:3000/src/index.js"></script>
+			<script type="module" src="/src/index.js"></script>
 			<script
 				src="https://cdnjs.cloudflare.com/ajax/libs/rainbow/1.2.0/js/rainbow.min.js"
 				integrity="sha512-1iwOtzgGTn5KiNhyTHdGh8IpixXZnsD0vRXUqNUgWqET4Uv3vDXuHq55cGjdJ+qNBL/HxH815N7qvLxgzA1dYw=="

@@ -25,6 +25,7 @@ const Minilith = {
 			.then((result) => {
 				if (result) {
 					result.map((res) => {
+						console.log(`mounting ${res.name}`);
 						this.miniliths[res.name].renderHistory.push(res.render);
 						this.miniliths[res.name].renderTick();
 					});
