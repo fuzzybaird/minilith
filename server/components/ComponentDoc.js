@@ -34,6 +34,9 @@ export default class ComponentDoc extends RootComponent {
 		/>
 	</head>
 	<body>
+		<!-- 
+			This is the where you declare your component
+		 -->
 		<template
 			mi-name="{{component_name}}"
 			mi-target="https://minilith.elibaird.com/minilith"
