@@ -33,11 +33,11 @@ export default class testpage extends RootComponent {
 					mi-target="/minilith"
 					mi-context="{component_name:'DoctorSearch'}"
 				></template>
-				<template
+				<!-- <template
 					mi-name="ComponentDoc"
 					mi-target="/minilith"
 					mi-context="{component_name:'TabComponent'}"
-				></template>
+				></template> -->
 			</div>
 	
 			<!-- <template
