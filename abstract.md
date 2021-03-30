@@ -141,3 +141,5 @@ export default class DoctorSearch extends RootComponent {
 	};
 }
 ```
+
+I would love to chat more about Minilith on twitter [EliBaird](https://twitter.com/EliBaird)
