@@ -2,7 +2,7 @@
 
 A new way to make re-usable and composable components that can be shared cross domain, that put the control back into HTML the original declarative paradigm. This project consists of 1 front end library that acts like the contract between the DOM and your sever, several server side libraries to assist with building server components in different languages. For now we are just building the JS Server framework. But hope to have GO, Ruby, Python, PHP etc in the long run.
 
-if you want to read the abstract here is the link [Abstract Problem Statement](/fuzzybaird/minilith/abstract)
+if you want to read the abstract here is the link [Abstract Problem Statement](https://github.com/fuzzybaird/minilith/blob/main/abstract.md)
 
 ## client
 
