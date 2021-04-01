@@ -21,7 +21,7 @@ export default class ComponentDoc extends RootComponent {
 	<pre
 		class="overflow-x-scroll"
 	><code data-language="html">{{component_template}}</code></pre>
-	<p class="mb-2">If you want to get started with a quick example to play around with, here is a starter html page. Simply paste into an .html file on your local machine and use the overide template, to start custimizing this search</p>
+	<p class="mb-2">If you want to get started with a quick example to play around with, here is a starter html page. Simply paste into an .html file on your local machine and use the overide template, to start custimizing this component</p>
 	<pre
 		class="overflow-x-scroll"
 	><code data-language="html">{{rendered_helper}}</code></pre>
