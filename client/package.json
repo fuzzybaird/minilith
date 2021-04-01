@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest test --watch",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest test --watch --runInBand",
     "start": "snowpack dev"
   },
   "keywords": [

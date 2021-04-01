@@ -4,7 +4,7 @@ export default class comp extends RootComponent {
 	<div>
 		<h3>{{first_name}}</h3>
 		<p>{{last_name}}</p>
-		<button mi:click="click">click me!</button>
+		<button id="click" mi:click="click">click me!</button>
 		{{#clicked}}
 			<h1>I was freaking clicked</h1>
 		{{/clicked}}

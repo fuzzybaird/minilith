@@ -1,13 +1,16 @@
-import { walk, saferEval, debounce } from "./utils.js";
+import { saferEval, debounce, makeId } from "./utils.js";
 import fetcher from "./Fetcher.js";
 import morphdom from "./morphdom/index.js";
+
 export default class MiniComp {
 	constructor(template) {
 		this.name = template.getAttribute("mi-name");
+		this.id = template.getAttribute("mi-id")
+			? template.getAttribute("mi-id")
+			: makeId(8);
 		this.ref = template;
 		this.context = {};
 		this.miniTarget = "/minilith";
-		console.log("mi-context", template.getAttribute("mi-context"));
 		if (template.getAttribute("mi-context")) {
 			this.context = saferEval(
 				template,
@@ -48,7 +51,6 @@ export default class MiniComp {
 
 			onNodeDiscarded: (node) => {
 				this.morphChanges.changed.push(node);
-				console.log("onNodeDiscarded", node);
 			},
 
 			onBeforeElChildrenUpdated: (node) => {
@@ -63,14 +65,6 @@ export default class MiniComp {
 					return false;
 				}
 
-				// move previous value to new value
-				// if (from.getAttribute("value")) {
-				// 	to.setAttribute("value", from.getAttribute("value"));
-				// }
-				console.log(from.getAttribute("value"), to.getAttribute("value"));
-				// Reset the index of wire:modeled select elements in the
-				// "to" node before doing the diff, so that the options
-				// have the proper in-memory .selected value set.
 				if (
 					from.hasAttribute("mi:model") &&
 					from.tagName.toUpperCase() === "SELECT"
@@ -81,7 +75,6 @@ export default class MiniComp {
 
 			onElUpdated: (node) => {
 				if (node.value && node.hasAttribute("mi:model")) {
-					console.log("here");
 					node.value = this[node.getAttribute("mi:model")];
 				}
 				this.morphChanges.changed.push(node);
@@ -114,7 +107,7 @@ export default class MiniComp {
 	}
 	debounceAction = debounce((self, model) => {
 		self.dispatchAction("updateContextVal", [model, self.context[model]]);
-	}, 1000);
+	}, 10);
 	/**
 	 * Adding a template to the render stack. This is so we can iterate through
 	 * all of the components and then have more control around hooking into
@@ -133,6 +126,7 @@ export default class MiniComp {
 		fetcher
 			.postData(this.miniTarget, this.generateServerRequest(method, params))
 			.then((res) => {
+				// console.log("HERE");
 				this.renderHistory.push(res.render);
 				this.context = res.context;
 				this.renderTick();
@@ -144,6 +138,7 @@ export default class MiniComp {
 	}
 	generateServerRequest(method, params = []) {
 		return {
+			id: this.id,
 			name: this.name,
 			action: { method, params },
 			overrideTemplate: this.template.innerHTML,

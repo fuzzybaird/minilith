@@ -8,9 +8,8 @@ const Minilith = {
 
 		for (let index = 0; index < allTemplates.length; index++) {
 			if (allTemplates[index].getAttribute("mi-name")) {
-				this.miniliths[
-					allTemplates[index].getAttribute("mi-name")
-				] = new MiniComp(allTemplates[index]);
+				const comp = new MiniComp(allTemplates[index]);
+				this.miniliths[comp.id] = comp;
 			}
 		}
 
@@ -25,9 +24,8 @@ const Minilith = {
 			.then((result) => {
 				if (result) {
 					result.map((res) => {
-						console.log(`mounting ${res.name}`);
-						this.miniliths[res.name].renderHistory.push(res.render);
-						this.miniliths[res.name].renderTick();
+						this.miniliths[res.id].renderHistory.push(res.render);
+						this.miniliths[res.id].renderTick();
 					});
 					return result;
 				}
@@ -36,6 +34,9 @@ const Minilith = {
 				console.log(error);
 			});
 	},
+	clear(){
+		this.miniliths = {};
+	}
 };
 
 if (!isTesting()) {
