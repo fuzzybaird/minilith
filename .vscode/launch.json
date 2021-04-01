@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug tests single run",
+        "type": "node",
+        "request": "launch",
+        "env": { "CI": "true", "NODE_OPTIONS": "--experimental-vm-modules" },
+        "runtimeExecutable": "${workspaceRoot}/client/node_modules/jest/bin/jest.js",
+        "args": ["test", "--runInBand", "--no-cache","-i"],
+        "cwd": "${workspaceRoot}/client",
+        "protocol": "inspector",
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      }
+    ]
+  }

@@ -1,6 +1,7 @@
 import hbs from "hbs";
 
 export default class RootComponent {
+	id = "";
 	render() {
 		const template = hbs.handlebars.compile(this.template);
 		return template(this);
@@ -12,6 +13,7 @@ export default class RootComponent {
 		const template = hbs.handlebars.compile(this.template);
 		return {
 			name: this.constructor.name,
+			id: this.id,
 			render: template(this),
 			context: this,
 		};
@@ -30,5 +32,15 @@ export default class RootComponent {
 			this[key] = val;
 		}
 	}
-	init() {}
+	async init() {}
+	makeId(length) {
+		var result = "";
+		var characters =
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		var charactersLength = characters.length;
+		for (var i = 0; i < length; i++) {
+			result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		}
+		return result;
+	}
 }

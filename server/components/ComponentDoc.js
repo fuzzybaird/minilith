@@ -5,22 +5,26 @@ import hbs from "hbs";
 export default class ComponentDoc extends RootComponent {
 	template = /*html*/ `
 <div class="p-4 bg-gray-200 border">
-	<h1 class="text-center text-3xl">{{component_name}}</h1>
-	<ul class="mb-4">
-		{{#component_meta}}
-		<li class="p-2">
-			<b>{{name}}</b>: type
-			<span class="text-green-500">{{type}}</span> {{#arguments}}
-			[{{.}}], {{/arguments}}
-		</li>
-		{{/component_meta}}
-	</ul>
-	<pre
-		class="overflow-x-scroll"
-	><code data-language="html">{{rendered_helper}}</code></pre>
+	<h2 class="text-center text-3xl">{{component_name}}</h2>
+	<div class="p-2 bg-gray-100">
+		<ul>
+			{{#component_meta}}
+			<li>
+				<b>{{name}}</b>: type
+				<span class="text-green-500">{{type}}</span> {{#arguments}}
+				[{{.}}], {{/arguments}}
+			</li>
+			{{/component_meta}}
+		</ul>
+	</div>
+	<p class="mb-2">This is the default markup for this minilith slot. if you want start to customize this just place between <span class="bg-gray-100 p-1">&lt;template&gt;__template__&lt;/template&gt;</span> tags</p>
 	<pre
 		class="overflow-x-scroll"
 	><code data-language="html">{{component_template}}</code></pre>
+	<p class="mb-2">If you want to get started with a quick example to play around with, here is a starter html page. Simply paste into an .html file on your local machine and use the overide template, to start custimizing this search</p>
+	<pre
+		class="overflow-x-scroll"
+	><code data-language="html">{{rendered_helper}}</code></pre>
 </div>`;
 
 	/**
@@ -53,6 +57,12 @@ export default class ComponentDoc extends RootComponent {
 	show_default_template = false;
 	component_template = "";
 	component_meta = [];
+	getDoctorData() {
+		this.doctors = db.get();
+	}
+	url = () => {
+		return req.protocol + '://' + req.get('host')
+	}
 	rendered_helper = () => {
 		const template = hbs.handlebars.compile(this.helper_template);
 		return template({ component_name: this.component_name });

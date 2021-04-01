@@ -6,11 +6,24 @@
 		/>
 	</head>
 	<body>
-		<template
-			mi-name="DoctorSearch"
-			mi-target="https://minilith.elibaird.com/minilith"
-			mi-context="{}"
-		></template>
+		<nav class="w-1/4">
+			<template
+				mi-name="DoctorSearch"
+				mi-target="https://minilith.elibaird.com/minilith"
+				mi-context="{search: 'Bob'}"
+			>
+				<input mi:model="search" class="p-4 rounded" />
+				<ul>
+					<!-- 
+		I am currently using Mustache templates for there "Logicless"
+		nature so that I can avoid script injections.
+	-->
+					{{#search_result}}
+					<li class="text-red-200">{{name}}</li>
+					{{/search_result}}
+				</ul>
+			</template>
+		</nav>
 		<script
 			type="module"
 			src="https://minilith.elibaird.com/src/index.js"

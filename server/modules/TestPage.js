@@ -23,16 +23,30 @@ export default class testpage extends RootComponent {
 		<body>
 			<h1 class="text-2xl text-center mb-6">My page</h1>
 			<div class="max-w-prose mx-auto">
-				<template
-					mi-name="DoctorSearch"
-					mi-target="/minilith"
-					mi-context="{search:'Cat'}"
-				></template>
-				<template
-					mi-name="ComponentDoc"
-					mi-target="/minilith"
-					mi-context="{component_name:'DoctorSearch'}"
-				></template>
+				<div class="mb-4">
+					<template
+						mi-name="DoctorSearch"
+						mi-target="/minilith"
+						mi-context="{search:'Cat'}"
+					></template>
+					<template
+						mi-name="ComponentDoc"
+						mi-target="/minilith"
+						mi-context="{component_name:'DoctorSearch'}"
+					></template>
+				</div>
+				<div class="mb-4">
+					<template
+						mi-name="TabComponent"
+						mi-target="/minilith"
+						mi-context="{search:'Cat'}"
+					></template>
+					<template
+						mi-name="ComponentDoc"
+						mi-target="/minilith"
+						mi-context="{component_name:'TabComponent'}"
+					></template>
+				</div>
 				<!-- <template
 					mi-name="ComponentDoc"
 					mi-target="/minilith"

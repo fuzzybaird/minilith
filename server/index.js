@@ -20,7 +20,13 @@ app.post("/minilith", async (req, res) => {
 		const compClass = await import(`./components/${req.body.name}.js`);
 		res.send(await hydrateAndRespond(req.body, compClass.default));
 	} catch (error) {
-		console.error(error);
+		res
+			.status(500)
+			.send({
+				status: "error",
+				err: error,
+				render: "<pre>" + String(error) + "</pre>",
+			});
 	}
 });
 app.use(express.static(root.resolve("../client")));
