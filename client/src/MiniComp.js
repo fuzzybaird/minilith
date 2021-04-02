@@ -46,7 +46,7 @@ export default class MiniComp {
 			},
 
 			onBeforeNodeDiscarded: (node) => {
-				console.log(node);
+				// console.log(node);
 			},
 
 			onNodeDiscarded: (node) => {
@@ -97,7 +97,6 @@ export default class MiniComp {
 					}
 					node.addEventListener("input", (event) => {
 						this.context[model] = event.target.value;
-						console.log("called");
 						this.debounceAction(this, model);
 					});
 				}

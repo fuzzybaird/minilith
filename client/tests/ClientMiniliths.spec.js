@@ -107,3 +107,10 @@ describe("client side library", () => {
 		});
 	});
 });
+describe('Minilith Directive-able', () => {
+	it('should be able to take a node, and return a directives object with array of minilith directives', () => {
+		document.body.innerHTML = /*html*/ `
+		<button mi:click="whysobad"></button>
+		`;
+	});
+});
