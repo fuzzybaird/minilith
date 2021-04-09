@@ -43,4 +43,4 @@ TLDR: include the minilith script on your page, and declare the source of the co
 </html>
 ```
 
-if you want to override the template (Mustache) of a component just place your own inside the `<template>` tags of the component. the minilith server root url also acts like a component registry where you can get the default template of a component example. [https://minilith.elibaird.com/minilith](https://minilith.elibaird.com/minilith)
+if you want to override the template (Mustache) of a component just place your own inside the `<template>` tags of the component. the minilith server root url also acts like a component registry where you can get the default template of a component example. [https://minilith.elibaird.com](https://minilith.elibaird.com)
